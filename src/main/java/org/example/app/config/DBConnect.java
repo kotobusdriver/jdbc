@@ -1,5 +1,7 @@
 package org.example.app.config;
 
+import org.example.app.view.AppView;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +18,7 @@ public class DBConnect {
             props.load(DBConnect.class.getResourceAsStream("db/jdbc.properties"));
             conn = DriverManager.getConnection(props.getProperty("dbDriver")+ props.getProperty("dbName"), props.getProperty("username"), props.getProperty("password"));
         } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
+            new AppView().getOutput(e.getMessage());
         }
     return conn;
     }

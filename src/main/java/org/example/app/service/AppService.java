@@ -8,15 +8,15 @@ import org.example.app.view.AppView;
 
 public class AppService {
 
-    EmployeeController controller = new EmployeeController();
+    EmployeeController employeeController = new EmployeeController();
 
     public void handleOption(int option) {
         switch (option) {
-            case 1 -> controller.create();
-            case 2 -> controller.read();
-            case 3 -> controller.update();
-            case 4 -> controller.delete();
-            case 5 -> controller.readById();
+            case 1 -> employeeController.create();
+            case 2 -> employeeController.read();
+            case 3 -> employeeController.update();
+            case 4 -> employeeController.delete();
+            case 5 -> employeeController.readById();
             case 0 -> new AppView().getOutput(Integer.toString(option));
             default -> {
                 try {

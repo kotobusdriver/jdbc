@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class EmployeeCreateView {
+
     public Map<String, String> getData() {
         System.out.println("\nCREATE FORM");
         Map<String, String> map = new HashMap<>();

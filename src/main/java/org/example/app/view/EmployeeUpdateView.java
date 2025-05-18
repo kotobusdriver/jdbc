@@ -8,16 +8,14 @@ import java.util.Scanner;
 
 public class EmployeeUpdateView {
 
-    public Map<String, String> getData() {
+    public String getEmployeeId() {
 
         System.out.println("\\nUPDATE FORM (leave blank to keep current)");
         Map<String, String> map = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Input employee id: ");
-        map.put("id", scanner.nextLine().trim());
-
-        return map;
+        return scanner.nextLine().trim();
     }
 
     public Map<String, String> getExistingData(Employee existingEmployee) {
@@ -32,12 +30,13 @@ public class EmployeeUpdateView {
         String age = scanner.nextLine().trim();
         map.put("age", age.isEmpty() ? String.valueOf(existingEmployee.getAge()) : age);
 
-        System.out.printf("Position [%d]: ", existingEmployee.getPosition());
+        System.out.printf("Position [%s]: ", existingEmployee.getPosition());
         String position = scanner.nextLine().trim();
         map.put("position", position.isEmpty() ? existingEmployee.getPosition() : position);
 
         System.out.printf("Salary [%.2f]: ", existingEmployee.getSalary());
         String salary = scanner.nextLine().trim();
+        map.put("salary", salary.isEmpty() ? String.valueOf(existingEmployee.getSalary()) : salary);
 
         map.put("id", String.valueOf(existingEmployee.getId()));
 

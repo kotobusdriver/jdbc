@@ -1,11 +1,14 @@
 package org.example.app.controller;
 
+import org.example.app.entity.Employee;
 import org.example.app.service.EmployeeService;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.EmployeeCreateView;
 import org.example.app.view.EmployeeReadView;
 import org.example.app.view.EmployeeUpdateView;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class EmployeeController {
@@ -28,9 +31,11 @@ public class EmployeeController {
 
     public void update() {
         EmployeeUpdateView view = new EmployeeUpdateView();
-        view.getOutput(service.update(view.getData()));
+        String employeeID = view.getEmployeeId();
+        Employee existingEmployee = service.findById(Integer.parseInt(employeeID));
+        Map<String, String> newEmployeeData = view.getExistingData(existingEmployee);
+        view.getOutput(service.update(newEmployeeData));
         AppStarter.startApp();
-
     }
 
     public void delete() {

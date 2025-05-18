@@ -3,6 +3,7 @@ package org.example.app.controller;
 import org.example.app.service.EmployeeService;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.EmployeeCreateView;
+import org.example.app.view.EmployeeReadView;
 
 public class EmployeeController {
 
@@ -16,6 +17,9 @@ public class EmployeeController {
 
 
     public void read() {
+        EmployeeReadView view = new EmployeeReadView();
+        view.getOutput(service.read());
+        AppStarter.startApp();
     }
 
 

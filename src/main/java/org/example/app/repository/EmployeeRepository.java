@@ -5,7 +5,12 @@ import org.example.app.entity.Employee;
 import org.example.app.utils.UserMessage;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class EmployeeRepository {
 
@@ -26,6 +31,28 @@ public class EmployeeRepository {
             return e.getMessage();
         }
 
+
+
     }
 
+    public Optional<List<Employee>> read() {
+        String sql = "SELECT * FROM " + TABLE_EMPLOYEES;
+        List <Employee> list = new ArrayList<>();
+        try (Statement stmt = DBConnect.connect().createStatement()){
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                list.add(new Employee (
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("age"),
+                        rs.getString("position"),
+                        rs.getFloat("salary")
+                ));
+            }
+            return Optional.of(list);
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -3,9 +3,7 @@ package org.example.app.controller;
 import org.example.app.entity.Employee;
 import org.example.app.service.EmployeeService;
 import org.example.app.utils.AppStarter;
-import org.example.app.view.EmployeeCreateView;
-import org.example.app.view.EmployeeReadView;
-import org.example.app.view.EmployeeUpdateView;
+import org.example.app.view.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,8 +37,15 @@ public class EmployeeController {
     }
 
     public void delete() {
+        EmployeeDeleteView view = new EmployeeDeleteView();
+        view.getOutput(service.delete(view.getData()));
+        AppStarter.startApp();
     }
 
     public void readById() {
+        EmployeeReadbyIDView view = new EmployeeReadbyIDView();
+        String employeeID = view.getEmployeeId();
+        view.getOutput(service.findById(Integer.parseInt(employeeID)).toString());
+        AppStarter.startApp();
     }
 }

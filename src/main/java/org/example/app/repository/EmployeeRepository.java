@@ -77,7 +77,22 @@ public class EmployeeRepository {
     }
 
 
-
+    public String delete(int id) {
+        if (findById(id).isEmpty()){
+            return String.valueOf(UserMessage.NO_DATA_MSG);
+        }
+        else{
+            String sql = "DELETE FROM " + TABLE_EMPLOYEES + " WHERE id = ?";
+            try (PreparedStatement prstm = DBConnect.connect().prepareStatement(sql)){
+                prstm.setInt(1, id);
+                prstm.executeUpdate();
+                return String.valueOf(UserMessage.DATA_DELETED_MSG);
+            }
+            catch (SQLException e) {
+                return e.getMessage();
+            }
+        }
+    }
 
     private Optional<Employee> readById(int id) {
         String sql = "SELECT * FROM " + TABLE_EMPLOYEES + " WHERE id = ?";
@@ -119,5 +134,7 @@ public class EmployeeRepository {
         }
         return Optional.empty();
     }
+
+
 
 }

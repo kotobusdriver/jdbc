@@ -58,6 +58,19 @@ public class EmployeeService {
         return repository.update(new EmployeeMapper().mapData(data));
     }
 
+    public String delete(Map <String, String> data) {
+        Map<String, String> errors =
+                new EmployeeValidator().validateEmployeeData(data);
+        if (!errors.isEmpty()) {
+            try {
+                throw new EmployeeException("Check inputs", errors);
+            } catch (EmployeeException e) {
+                return e.getErrors(errors);
+            }
+        }
+        return repository.delete(new EmployeeMapper().mapData(data).getId());
+    }
+
     public Employee findById(int id) {
         return repository.findById(id).orElse(null);
     }

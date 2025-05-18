@@ -8,7 +8,8 @@ public enum UserMessage {
     INCORRECT_AGE_MSG("Age should be between 18 and 100."),
     DATA_INSERT_MSG("Data inserted successfully."),
     INCORRECT_SALARY_MSG("Salary must be between 1 and 1000000."),
-    NO_DATA_MSG("Nothing to show.");
+    NO_DATA_MSG("Nothing to show."),
+    DATA_DELETED_MSG("Data deleted successfully."),;
 
     private final String msg;
 

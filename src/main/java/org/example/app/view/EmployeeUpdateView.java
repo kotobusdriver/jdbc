@@ -10,7 +10,7 @@ public class EmployeeUpdateView {
 
     public String getEmployeeId() {
 
-        System.out.println("\\nUPDATE FORM (leave blank to keep current)");
+        System.out.println("\nUPDATE FORM (leave blank to keep current)");
         Map<String, String> map = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
 

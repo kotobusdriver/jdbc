@@ -5,7 +5,8 @@ public enum UserMessage {
     APP_CLOSE_MSG ("App closed."),
     INCORRECT_OPTION_MSG("Incorrect option. Try again."),
     INPUT_REQ_MSG ("Input required"),
-    INCORRECT_AGE_MSG("Age should be between 18 and 100");
+    INCORRECT_AGE_MSG("Age should be between 18 and 100"),
+    DATA_INSERT_MSG("Data inserted successfully");
 
     private final String msg;
 

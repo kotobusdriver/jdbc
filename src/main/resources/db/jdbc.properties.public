@@ -1,6 +1,5 @@
-# DO NOT PUSH TO REMOTE
 
-dbDriver = jdbc:postgres://localhost:5432/
+dbDriver = jdbc:postgresql://localhost:5432/
 dbName = [your_db_name]
 username = [your_username]
 password = [your_password]

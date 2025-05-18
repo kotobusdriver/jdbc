@@ -15,7 +15,7 @@ public class EmployeeService {
             try {
                 throw new EmployeeException("Check data", errors);
             } catch (EmployeeException e) {
-                throw new RuntimeException(e);
+                return e.getErrors(errors);
             }
         }
         return repository.create(new EmployeeMapper().mapData(data));

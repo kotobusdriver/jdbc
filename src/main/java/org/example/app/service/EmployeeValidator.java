@@ -11,7 +11,7 @@ public class EmployeeValidator {
 
         Map<String, String> errors = new HashMap<>();
 
-        if(data.containsKey("id") && EmployeeValidator.isIdValid(data.get("id")))
+        if(data.containsKey("id") && !isIdValid(data.get("id")))
             errors.put("id", String.valueOf(UserMessage.INCORRECT_VALUE_MSG));
 
         if (data.containsKey("name")) {
@@ -19,7 +19,7 @@ public class EmployeeValidator {
                 errors.put("name", String.valueOf(UserMessage.INPUT_REQ_MSG));
         }
 
-        if(data.containsKey("age") && EmployeeValidator.isAgeValid(data.get("age")))
+        if(data.containsKey("age") && !isAgeValid(data.get("age")))
             errors.put("age", String.valueOf(UserMessage.INCORRECT_AGE_MSG));
 
 
@@ -28,8 +28,8 @@ public class EmployeeValidator {
                 errors.put("position", String.valueOf(UserMessage.INPUT_REQ_MSG));
         }
 
-        if(data.containsKey("salary") && EmployeeValidator.isSalaryValid(data.get("salary")))
-            errors.put("salary", String.valueOf(UserMessage.INCORRECT_AGE_MSG));
+        if(data.containsKey("salary") && !isSalaryValid(data.get("salary")))
+            errors.put("salary", String.valueOf(UserMessage.INCORRECT_SALARY_MSG));
 
         return errors;
     }
@@ -39,8 +39,8 @@ public class EmployeeValidator {
             return false;
 
         try {
-            double a = Double.parseDouble(salary.trim());
-            return a >= 1 && a <= 1000000000;
+            double s = Double.parseDouble(salary.trim());
+            return s >= 1 && s <= 1000000000;
         }
         catch (NumberFormatException e) {
             return false;

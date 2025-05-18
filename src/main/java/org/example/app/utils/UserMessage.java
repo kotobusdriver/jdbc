@@ -6,7 +6,8 @@ public enum UserMessage {
     INCORRECT_OPTION_MSG("Incorrect option. Try again."),
     INPUT_REQ_MSG ("Input required"),
     INCORRECT_AGE_MSG("Age should be between 18 and 100"),
-    DATA_INSERT_MSG("Data inserted successfully");
+    DATA_INSERT_MSG("Data inserted successfully"),
+    INCORRECT_SALARY_MSG("Salary must be between 1 and 1000000");
 
     private final String msg;
 

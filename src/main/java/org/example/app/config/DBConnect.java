@@ -15,7 +15,7 @@ public class DBConnect {
         Connection conn = null;
 
         try {
-            props.load(DBConnect.class.getResourceAsStream("db/jdbc.properties"));
+            props.load(DBConnect.class.getClassLoader().getResourceAsStream("db/jdbc.properties"));
             conn = DriverManager.getConnection(props.getProperty("dbDriver")+ props.getProperty("dbName"), props.getProperty("username"), props.getProperty("password"));
         } catch (IOException | SQLException e) {
             new AppView().getOutput(e.getMessage());

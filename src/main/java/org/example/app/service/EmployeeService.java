@@ -44,4 +44,22 @@ public class EmployeeService {
         }
         else return String.valueOf(UserMessage.NO_DATA_MSG);
     }
+
+    public String update(Map <String, String> data) {
+        Map<String, String> errors =
+                new EmployeeValidator().validateEmployeeData(data);
+        if (!errors.isEmpty()) {
+            try {
+                throw new EmployeeException("Check inputs", errors);
+            } catch (EmployeeException e) {
+                return e.getErrors(errors);
+            }
+        }
+        return repository.update(new EmployeeMapper().mapData(data));
+    }
+
+    public Employee findById(int id) {
+        return repository.findById(id).orElse(null);
+    }
+
 }

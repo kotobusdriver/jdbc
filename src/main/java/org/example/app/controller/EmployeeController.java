@@ -4,6 +4,9 @@ import org.example.app.service.EmployeeService;
 import org.example.app.utils.AppStarter;
 import org.example.app.view.EmployeeCreateView;
 import org.example.app.view.EmployeeReadView;
+import org.example.app.view.EmployeeUpdateView;
+
+import java.util.Scanner;
 
 public class EmployeeController {
 
@@ -24,6 +27,10 @@ public class EmployeeController {
 
 
     public void update() {
+        EmployeeUpdateView view = new EmployeeUpdateView();
+        view.getOutput(service.update(view.getData()));
+        AppStarter.startApp();
+
     }
 
     public void delete() {
